@@ -139,3 +139,43 @@ lms_project/
     - `templates/books/`: 도서 관리 템플릿
     - `migrations/`: 마이그레이션 파일
     - `apps.py`: 앱 설정
+
+## 1.5 URL 구조
+
+### 1.5.1 메인
+- `/`: 메인 페이지(도서 목록 페이지)
+
+### 1.5.2 인증 관련 (Accounts)
+- `/accounts/register/`: 회원가입
+- `/accounts/login/`: 로그인
+- `/accounts/logout/`: 로그아웃
+- `/accounts/profile/`: 프로필(마이페이지)
+    - 대출 내역
+    - 예약 내역
+    - 개인 정보 수정
+
+### 1.5.3 도서 관련 (Books)
+- `/books/`: 도서 목록 및 검색 (도서명, 저자, ISBN)
+- `/books/<int:pk>/`: 도서 상세 정보
+- `/books/create/`: 도서 등록(사서 전용)
+- `/books/<int:pk>/update/`: 도서 수정(사서 전용)
+- `/books/<int:pk>/delete/`: 도서 삭제(사서 전용)
+
+### 1.5.4 대출 관련 (Loans)
+
+- `/loans/`: 전체 도서 대출 목록 (사서 전용)
+- `/loans/user/`: 사용자 대출 목록 (일반 사용자)
+- `/loans//create/<int:book_id>/`: 도서 대출 신청
+- `/loans/return/<int:loan_id>/`: 도서 반납
+- `/loans/overdue/`: 연체 도서 목록 (사서 전용)
+
+### 1.5.5 예약 관련 (Reservations)
+- `/reservations/`: 전체 도서 예약 목록 (사서 전용)
+- `/reservations/user/`: 내 예약 현황 (일반 사용자)
+- `/reservations/create/<int:book_id>/`: 도서 예약 신청
+- `/reservations/cancel/<int:reservation_id>/`: 도서 예약 취소
+
+### 1.5.6 선택 사항 엔드 포인트
+- `/books/search/`: 도서 검색
+- `/books/status/<int:book_id>/`: 도서 상태 확인 API
+- `loans/status/<int:loan_id>/`: 대출 상태 확인 API
