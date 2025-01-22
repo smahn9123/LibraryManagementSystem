@@ -50,3 +50,92 @@
     - 대출 중인 도서 예약 불가
     - 1인당 도서별 1회 예약 가능
     - 예약 유효기간 (1일)
+
+## 1.4 프로젝트 구조
+
+프로젝트 구조는 다음과 같이 구성합니다.
+```
+lms_project/
+    ├── manage.py                   # Django 관리 명령어
+    ├── db.sqlite3                  # SQLite 데이터베이스 파일
+    │
+    ├── config/                     # 프로젝트 설정 폴더
+    │   ├── init.py
+    │   ├── asgi.py                # ASGI 설정
+    │   ├── settings.py           # 프로젝트 설정
+    │   ├── urls.py              # 프로젝트 URL 설정
+    │   └── wsgi.py             # WSGI 설정
+    │
+    ├── static/                     # 정적 파일
+    │   ├── css/                  # CSS 파일
+    │   └── js/                  # JavaScript 파일
+    │
+    ├── templates/                  # 공통 템플릿
+    │   ├── base.html              # 기본 템플릿
+    │   └── navbar.html            # 네비게이션 바
+    │
+    ├── accounts/                   # 사용자 관리 앱
+    │   ├── migrations/
+    │   ├── templates/             # 사용자 관리 템플릿
+    │   │   └── accounts/         # accounts 앱 템플릿
+    │   │       ├── login.html   # 로그인
+    │   │       ├── register.html # 회원가입
+    │   │       └── profile.html # 프로필
+    │   ├── init.py 
+    │   ├── admin.py # 사용자 관리 관리자 설정
+    │   ├── apps.py 
+    │   ├── forms.py # 사용자 폼
+    │   ├── models.py # 사용자 모델
+    │   ├── urls.py # 사용자 URL 설정
+    │   └── views.py # 사용자 뷰
+    │
+    └── books/                      # 도서 관리 앱
+        ├── migrations/ 
+        ├── templates/             # 도서 관리 템플릿
+        │   └── books/            # books 앱 템플릿
+        │       ├── book_list.html # 도서 목록
+        │       ├── book_detail.html # 도서 상세
+        │       ├── loan_list.html # 대출 목록
+        │       └── reservation_list.html # 예약 목록
+        ├── init.py
+        ├── admin.py # 도서 관리 관리자 설정
+        ├── apps.py 
+        ├── forms.py # 도서 폼
+        ├── models.py # 도서 모델
+        ├── urls.py # 도서 URL 설정
+        └── views.py # 도서 뷰
+```
+### 1.4.1 프로젝트 구조 설명
+
+1. `lms_project/`: 프로젝트 폴더
+2. `manage.py`: Django 관리 명령어
+3. `db.sqlite3`: SQLite 데이터베이스 파일
+4. `config/`: 프로젝트 설정 폴더
+    - `settings.py`: 프로젝트 설정
+    - `urls.py`: 프로젝트 URL 설정
+    - `wsgi.py`: WSGI 설정
+    - `asgi.py`: ASGI 설정
+5. `static/`: 정적 파일
+    - `css/`: CSS 파일
+    - `js/`: JavaScript 파일
+6. `templates/`: 공통 템플릿
+    - `base.html`: 기본 템플릿
+    - `navbar.html`: 네비게이션 바
+7. `accounts/`: 사용자 관리 앱
+    - `models.py`: 사용자 모델
+    - `forms.py`: 사용자 폼
+    - `views.py`: 사용자 뷰
+    - `urls.py`: 사용자 URL 설정
+    - `admin.py`: 사용자 관리 관리자 설정
+    - `templates/accounts/`: 사용자 관리 템플릿
+    - `migrations/`: 마이그레이션 파일
+    - `apps.py`: 앱 설정
+8. `books/`: 도서 관리 앱
+    - `models.py`: 도서 모델
+    - `forms.py`: 도서 폼
+    - `views.py`: 도서 뷰
+    - `urls.py`: 도서 URL 설정
+    - `admin.py`: 도서 관리 관리자 설정
+    - `templates/books/`: 도서 관리 템플릿
+    - `migrations/`: 마이그레이션 파일
+    - `apps.py`: 앱 설정
